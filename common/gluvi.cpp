@@ -5,12 +5,14 @@
 #include <fstream>
 #include <gluvi.h>
 #include <vec.h>
-#ifdef _MSC_VER
-#include <windows.h>
-#include <gl/GL.h>
-#else
-#include <OpenGL/OpenGL.h>
-#endif
+// #ifdef _MSC_VER
+// // #include <windows.h>
+// // #include <gl/GL.h>
+// #elif defined(__APPLE__)
+// #include <OpenGL/OpenGL.h>
+// #else
+//#include <GL/glew.h>
+// #endif
 
 
 using namespace std;
@@ -1281,6 +1283,12 @@ namespace Gluvi{
         glutInitDisplayMode(GLUT_DOUBLE|GLUT_RGBA|GLUT_ALPHA|GLUT_DEPTH|GLUT_STENCIL);
         glutInitWindowSize(winwidth, winheight);
         windowID = glutCreateWindow(windowtitle);
+
+        glewExperimental = GL_TRUE;
+        if (glewInit() != GLEW_OK) {
+            printf("Error: glewInit() failed in gluvi.cpp\n");
+        }
+
         glutReshapeFunc(gluviReshape);
         glutDisplayFunc(gluviDisplay);
         glutMouseFunc(gluviMouse);
