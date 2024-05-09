@@ -4,7 +4,7 @@
 # NOTE: Rename this file to "Makefile.local_defs" after specifying your machine settings
 #
 
-INCLUDE_PATH = -I. -I../eltopo3d -I../common -I../common/newsparse -I../common/sparse -I../common/meshes -I../common/tunicate -Icurlnoise -Idrivers 
+INCLUDE_PATH = -I. -I../eltopo3d -I../common -I../common/newsparse -I../common/sparse -I../common/meshes -I../common/tunicate -Icurlnoise -Idrivers -I/home/ahmed/miniconda3/include
 ELTOPO_PATH = ../eltopo3d
 
 RELEASE_FLAGS = -O3 -funroll-loops
@@ -15,7 +15,7 @@ LINK = g++
 
 DEPEND = g++ -D__LITTLE_ENDIAN__ -DUSE_FORTRAN_BLAS #-DNO_GUI
 CC = g++ -Wall -D__LITTLE_ENDIAN__ -DUSE_FORTRAN_BLAS -fPIC #-DNO_GUI -fPIC
-LINK_LIBS = -lGLEW -lGL -lGLU -lglut -llapack -lblas -lpthread
+LINK_LIBS = -L/home/ahmed/miniconda3/lib/ -lGLEW -lGL -lGLU -lglut -llapack -lblas -lpthread
 
 # On Mac OS X, this probably will work:
 

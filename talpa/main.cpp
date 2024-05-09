@@ -16,7 +16,7 @@
 // Whether to use an OpenGL GUI, or run command-line style
 // (Define NO_GUI in your build to suppress the GUI.)
 
-//#define NO_GUI
+#define NO_GUI
 
 #ifndef NO_GUI
 #define USE_GUI
