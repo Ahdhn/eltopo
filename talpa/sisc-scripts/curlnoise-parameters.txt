@@ -22,8 +22,9 @@ surftrack_parameters
    friction_coefficient 0.0
    perform_improvement 1
    allow_topology_changes 0
-   collision_safety 1
-   subdivision_scheme butterfly
+   collision_safety 0
+   subdivision_scheme midpoint
+   allow_non_manifold 0
 )
 
 

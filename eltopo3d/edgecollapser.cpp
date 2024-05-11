@@ -646,8 +646,8 @@ bool EdgeCollapser::collapse_edge( size_t edge )
         m_surf.set_newposition( vertex_to_keep, vertex_new_position );
         m_surf.set_newposition( vertex_to_delete, vertex_new_position );
         
-        bool volume_change = collapse_edge_introduces_volume_change( vertex_to_delete, edge, vertex_new_position );
-        
+        //bool volume_change = collapse_edge_introduces_volume_change( vertex_to_delete, edge, vertex_new_position );
+        bool volume_change = false;
         if ( volume_change )
         {
             // Restore saved positions which were changed by the function we just called.

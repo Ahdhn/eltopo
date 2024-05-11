@@ -504,9 +504,9 @@ namespace {
             double max_angle = max_triangle_angle( *g_surf );
             g_stats.add_per_frame_double( "max_angle", frame_stepper->get_frame(), rad2deg(max_angle) );
             
-            char imp_stats_filename[256];
-            sprintf( imp_stats_filename, "%s/aaa-imp-stats.txt", g_output_path );      
-            g_stats.write_to_file( imp_stats_filename );
+            //char imp_stats_filename[256];
+            //sprintf( imp_stats_filename, "%s/aaa-imp-stats.txt", g_output_path );      
+            //g_stats.write_to_file( imp_stats_filename );
             
             // ---------- 
             // advance underlying simulation
@@ -567,6 +567,8 @@ namespace {
             double end_time_sub_step = get_time_in_seconds();
             g_stats.add_per_frame_double( "sim_time", frame_stepper->get_frame(), end_time_sub_step - start_time_sub_step );
             
+            std::cout << " -------------- sim_time = "<< end_time_sub_step - start_time_sub_step <<" -------------- \n" << std::endl;
+
             g_stats.add_per_frame_int( "num_vertices", frame_stepper->get_frame(), g_surf->get_num_vertices() );
             g_stats.add_per_frame_int( "num_triangles", frame_stepper->get_frame(), g_surf->m_mesh.num_triangles() );
 
@@ -574,9 +576,9 @@ namespace {
             // file output
             //
             
-            char binary_filename[256];
-            sprintf( binary_filename, "%s/frame%04d.bin", g_output_path, frame_stepper->get_frame() );      
-            write_binary_file( g_surf->m_mesh, g_surf->get_positions(), g_surf->m_masses, sim->m_curr_t, binary_filename );   
+            //char binary_filename[256];
+            //sprintf( binary_filename, "%s/frame%04d.bin", g_output_path, frame_stepper->get_frame() );      
+            //write_binary_file( g_surf->m_mesh, g_surf->get_positions(), g_surf->m_masses, sim->m_curr_t, binary_filename );   
             
             char stats_filename[256];
             sprintf( stats_filename, "%s/aaa-stats.txt", g_output_path );      
@@ -600,6 +602,8 @@ namespace {
         {         
             sim->m_running = false;
             std::cout << "total time steps: " << g_stats.get_int( "total_sim_steps" ) << std::endl;
+            std::cout << "total sim time (s): " << g_stats.get_double( "total_sim_time" ) << std::endl;
+            std::cout << "time(s)/step: " << g_stats.get_double( "total_sim_time" ) /g_stats.get_int( "total_sim_steps" ) << std::endl;
         }
         
     }
