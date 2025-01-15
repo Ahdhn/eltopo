@@ -1630,7 +1630,12 @@ int main(int argc, char **argv)
     
     init_simulation( argv[1] );
     
-    
+    printf("\n #Triangles = %d\n", int(g_surf->m_mesh.num_triangles()));
+
+    //std::string filename = "el_topo_sphere_" +std::to_string(g_surf->m_mesh.num_triangles()) + ".obj";
+    //write_objfile(g_surf->m_mesh, g_surf->get_positions(), filename.c_str());
+    //exit(0);
+
     //
     // Make a new directory for output
     //
